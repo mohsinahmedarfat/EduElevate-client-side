@@ -1,10 +1,15 @@
+import BeInstructorSection from "./BeInstructorSection";
+import Collaborators from "./Collaborators";
 import Slider from "./Slider";
+import TotalUsage from "./TotalUsage";
 
 const Home = () => {
   return (
-    <div>
+    <div className="space-y-24 mt-5 mb-10">
       <Slider></Slider>
-      <h1 className="text-2xl">this is home</h1>
+      <Collaborators></Collaborators>
+      <TotalUsage></TotalUsage>
+      <BeInstructorSection></BeInstructorSection>
     </div>
   );
 };
