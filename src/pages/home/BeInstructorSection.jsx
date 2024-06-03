@@ -1,21 +1,24 @@
+import instructorImage from "../../assets/images/instructor.jpg";
+
 const BeInstructorSection = () => {
   return (
-    <div className="hero min-h-screen border border-red-400">
-      <div className="hero-content flex-col lg:flex-row">
-        <div className="w-1/2">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-            className=" rounded-lg shadow-2xl"
-          />
+    <div className="hero">
+      <div className="hero-content justify-evenly flex-col lg:flex-row">
+        <div className="w-1/3">
+          <img src={instructorImage} className=" rounded-lg shadow-2xl" />
         </div>
         <div className="w-1/2">
-          <h1 className="text-5xl font-bold">Box Office News!</h1>
+          <h1 className="text-5xl font-bold">Become an Instructor</h1>
           <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+            Join EduManage and transform the way you teach! As an instructor on
+            our platform, you will have the opportunity to reach a global
+            audience, share your expertise, and make a significant impact on
+            students lives. We provide you with advanced tools and resources to
+            create engaging and effective courses, allowing you to focus on what
+            you do best—teaching. Start your journey with us today and be a part
+            of the future of education!
           </p>
-          <button className="btn btn-primary">Get Started</button>
+          <button className="btn btn-info">Start teaching today</button>
         </div>
       </div>
     </div>
