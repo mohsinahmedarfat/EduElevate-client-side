@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAgQAygeJd8-4A1dCMp8f5qNz1XYu6lgv8",
-  authDomain: "eduelevate.firebaseapp.com",
-  projectId: "eduelevate",
-  storageBucket: "eduelevate.appspot.com",
-  messagingSenderId: "150306189773",
-  appId: "1:150306189773:web:1c360373d70727ba9e1484",
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase

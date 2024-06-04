@@ -97,7 +97,11 @@ const NavBar = () => {
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full">
-                  <img alt="Profile Picture" src={user?.photoURL} />
+                  <img
+                    referrerPolicy="no-referrer"
+                    alt="Profile Picture"
+                    src={user?.photoURL}
+                  />
                 </div>
               </div>
               <ul
@@ -118,7 +122,7 @@ const NavBar = () => {
           </>
         ) : (
           <button className="btn btn-sm bg-[#769FCD] text-white hover:bg-[#B9D7EA]">
-            <Link to="/register">Sign In</Link>
+            <Link to="/login">Sign In</Link>
           </button>
         )}
       </div>

@@ -1,47 +1,50 @@
-import { Link, ScrollRestoration, useNavigate } from "react-router-dom";
+import {
+  Link,
+  ScrollRestoration,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { useForm } from "react-hook-form";
-import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import useAuth from "../../hooks/useAuth";
 
-const Register = () => {
-  const { createUser, updateUserProfile, signInWithGoogle, setUser } =
-    useAuth();
+const Login = () => {
+  const { signInWithGoogle, login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state || "/";
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  // sign in with google
+  //   google sign in
   const handleGoogleLogin = async () => {
     try {
       await signInWithGoogle();
-      navigate("/");
-      toast.success("Sign in successfull");
+
+      toast.success("Sign in successful");
+      navigate(from);
     } catch (error) {
       toast.error(error.message);
     }
   };
 
   const onSubmit = async (data) => {
-    const { name, photo, email, password } = data;
     console.log(data);
+    const { email, password } = data;
 
-    // create user with email and password
+    // login user
     try {
-      const result = await createUser(email, password);
-      console.log(result);
+      await login(email, password);
 
-      await updateUserProfile(name, photo);
-
-      // Optimistic UI update
-      setUser({ ...result.user, photoURL: photo, displayName: name });
-
-      toast.success("Sign in successfull");
-      navigate("/");
+      toast.success("Login successful");
+      navigate(from);
     } catch (error) {
-      toast.error(error.message);
+      console.log(error.message);
+      toast.error("Invalid email or password");
     }
   };
   return (
@@ -51,41 +54,12 @@ const Register = () => {
         <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 border border-gray-300">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-              Create an account
+              Please Log in!
             </h1>
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="space-y-4 md:space-y-6"
             >
-              <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900">
-                  Your name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#B9D7EA] focus:border-[#B9D7EA] block w-full p-2.5 placeholder-gray-400 focus:ring-2 focus:outline-none"
-                  placeholder="your name"
-                  {...register("name", { required: true })}
-                />
-                {errors.name && (
-                  <small className="text-red-400">This field is required</small>
-                )}
-              </div>
-              <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900">
-                  photo URL
-                </label>
-                <input
-                  type="text"
-                  name="photo"
-                  id="photo"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#B9D7EA] focus:border-[#B9D7EA] block w-full p-2.5 placeholder-gray-400 focus:ring-2 focus:outline-none"
-                  placeholder="name@company.com"
-                  {...register("photo")}
-                />
-              </div>
               <div>
                 <label
                   htmlFor="email"
@@ -125,33 +99,11 @@ const Register = () => {
                 )}
               </div>
 
-              <div className="flex items-start">
-                <div className="flex items-center h-5">
-                  <input
-                    id="terms"
-                    aria-describedby="terms"
-                    type="checkbox"
-                    className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
-                    required
-                  />
-                </div>
-                <div className="ml-3 text-sm">
-                  <label htmlFor="terms" className="font-light text-gray-500">
-                    I accept the{" "}
-                    <a
-                      className="font-medium text-primary-600 hover:underline"
-                      href="#"
-                    >
-                      Terms and Conditions
-                    </a>
-                  </label>
-                </div>
-              </div>
               <button
                 type="submit"
                 className="w-full bg-[#769FCD] hover:bg-[#B9D7EA] text-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
-                Create an account
+                Log in
               </button>
             </form>
 
@@ -209,12 +161,12 @@ const Register = () => {
             </div>
 
             <p className="text-sm text-center font-light text-gray-500">
-              Already have an account?{" "}
+              Do not have a account?{" "}
               <Link
-                to="/login"
+                to="/register"
                 className="font-medium text-[#769FCD] hover:underline"
               >
-                Login.
+                Register.
               </Link>
             </p>
           </div>
@@ -224,4 +176,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

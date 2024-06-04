@@ -5,6 +5,7 @@ import Root from "../layout/Root";
 import AllClasses from "../pages/AllClasses/AllClasses";
 import TeachOnEEForm from "../pages/teachOnEE/TeachOnEEForm";
 import Register from "../pages/authentication/Register";
+import Login from "../pages/authentication/Login";
 
 const Router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const Router = createBrowserRouter([
   {
     path: "/register",
     element: <Register></Register>,
+  },
+  {
+    path: "/login",
+    element: <Login></Login>,
   },
 ]);
 
