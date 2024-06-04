@@ -12,7 +12,7 @@ const Collaborators = () => {
         technology and innovative resources to EduManage, enhancing our platform
         and ensuring a seamless, enriching educational experience for all users.
       </h1>
-      <div className="flex *:size-20 justify-evenly">
+      <div className="flex gap-6 *:size-20 justify-evenly">
         <div>
           <img src={samsung} alt="" />
         </div>

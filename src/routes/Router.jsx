@@ -4,6 +4,7 @@ import Home from "../pages/home/Home";
 import Root from "../layout/Root";
 import AllClasses from "../pages/AllClasses/AllClasses";
 import TeachOnEEForm from "../pages/teachOnEE/TeachOnEEForm";
+import Register from "../pages/authentication/Register";
 
 const Router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const Router = createBrowserRouter([
         element: <TeachOnEEForm></TeachOnEEForm>,
       },
     ],
+  },
+  {
+    path: "/register",
+    element: <Register></Register>,
   },
 ]);
 

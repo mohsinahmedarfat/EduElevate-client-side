@@ -2,9 +2,9 @@ import image from "../../assets/images/slider-4.jpg";
 
 const TotalUsage = () => {
   return (
-    <div className="grid grid-cols-3 gap-6 ">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 ">
       {/* left */}
-      <div className=" flex flex-col items-center justify-evenly">
+      <div className=" flex gap-4 lg:flex-col items-center justify-evenly">
         <div className="card bg-base-100 shadow-xl">
           <div className="card-body text-center">
             <p>Total User</p>
