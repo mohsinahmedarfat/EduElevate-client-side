@@ -6,7 +6,10 @@ import AllClasses from "../pages/AllClasses/AllClasses";
 import TeachOnEEForm from "../pages/teachOnEE/TeachOnEEForm";
 import Register from "../pages/authentication/Register";
 import Login from "../pages/authentication/Login";
-import DashboardLayout from "../layout/DashboardLayout";
+import DashboardLayout from "../layout/dashboard/DashboardLayout";
+import Profile from "../pages/dashboard/common/Profile";
+import AddClass from "../pages/dashboard/teacher/AddClass";
+import MyClasses from "../pages/dashboard/teacher/MyClasses";
 
 const Router = createBrowserRouter([
   {
@@ -39,7 +42,20 @@ const Router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashboardLayout></DashboardLayout>,
-    children: [],
+    children: [
+      {
+        index: true,
+        element: <Profile></Profile>,
+      },
+      {
+        path: "add-class",
+        element: <AddClass></AddClass>,
+      },
+      {
+        path: "my-classes",
+        element: <MyClasses></MyClasses>,
+      },
+    ],
   },
 ]);
 
