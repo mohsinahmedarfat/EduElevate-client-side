@@ -8,8 +8,8 @@ import Register from "../pages/authentication/Register";
 import Login from "../pages/authentication/Login";
 import DashboardLayout from "../layout/dashboard/DashboardLayout";
 import Profile from "../pages/dashboard/common/Profile";
-import AddClass from "../pages/dashboard/teacher/AddClass";
 import MyClasses from "../pages/dashboard/teacher/MyClasses";
+import AddClass from "../pages/dashboard/teacher/add-class/AddClass";
 
 const Router = createBrowserRouter([
   {

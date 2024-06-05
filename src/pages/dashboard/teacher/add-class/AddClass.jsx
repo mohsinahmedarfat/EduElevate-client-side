@@ -1,8 +1,10 @@
+import AddClassForm from "./AddClassForm";
+
 const AddClass = () => {
   return (
     <div>
-      <h1>add class page..</h1>
       {/* form */}
+      <AddClassForm></AddClassForm>
     </div>
   );
 };
