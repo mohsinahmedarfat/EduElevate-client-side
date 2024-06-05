@@ -112,7 +112,9 @@ const NavBar = () => {
                   <p>{user?.displayName}</p>
                 </li>
                 <li>
-                  <p>Dashboard</p>
+                  <Link to="/dashboard">
+                    <p>Dashboard</p>
+                  </Link>
                 </li>
                 <li>
                   <button onClick={logout}>Log out</button>

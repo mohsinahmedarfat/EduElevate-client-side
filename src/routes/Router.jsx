@@ -6,6 +6,7 @@ import AllClasses from "../pages/AllClasses/AllClasses";
 import TeachOnEEForm from "../pages/teachOnEE/TeachOnEEForm";
 import Register from "../pages/authentication/Register";
 import Login from "../pages/authentication/Login";
+import DashboardLayout from "../layout/DashboardLayout";
 
 const Router = createBrowserRouter([
   {
@@ -34,6 +35,11 @@ const Router = createBrowserRouter([
   {
     path: "/login",
     element: <Login></Login>,
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    children: [],
   },
 ]);
 
