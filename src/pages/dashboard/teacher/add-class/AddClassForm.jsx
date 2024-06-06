@@ -1,19 +1,62 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../../../hooks/useAuth";
+import LoadingSpinner from "../../../shared/LoadingSpinner";
+import { useMutation } from "@tanstack/react-query";
+import useAxiosPublic from "../../../../hook/useAxiosPublic";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AddClassForm = () => {
   const { user } = useAuth();
-  // const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  const { mutateAsync } = useMutation({
+    mutationFn: async (classData) => {
+      const { data } = await axiosPublic.post("/classes", classData);
+      return data;
+    },
+    onSuccess: () => {
+      console.log("data saved successfully");
+      toast.success("Class added successfully");
+      navigate("/dashboard/my-classes");
+    },
+  });
+
   const onSubmit = async (data) => {
     const { title, name, email, image, description, price } = data;
-    console.log(data);
+
+    const teacher = {
+      name: user?.displayName,
+      email: user?.email,
+      image: user?.photoURL,
+    };
+
+    const classData = {
+      title,
+      name,
+      email,
+      image,
+      description,
+      price: parseFloat(price),
+      teacher,
+    };
+    console.table(classData);
+
+    try {
+      // post request to server
+      await mutateAsync(classData);
+    } catch (err) {
+      console.log(err.message);
+    }
   };
+
+  if (!user) return <LoadingSpinner></LoadingSpinner>;
 
   return (
     <section className="py-10 ">
@@ -53,6 +96,7 @@ const AddClassForm = () => {
                   name="name"
                   className="text-gray-400 bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-[#B9D7EA] focus:border-[#B9D7EA] block w-full p-2.5 placeholder-gray-400 focus:ring-2 focus:outline-none"
                   defaultValue={user?.displayName}
+                  // defaultValue="Mohsin"
                   readOnly
                   {...register("name")}
                 />
@@ -67,7 +111,8 @@ const AddClassForm = () => {
                   name="email"
                   id="email"
                   defaultValue={user?.email}
-                  disabled
+                  // defaultValue="user@gmail.com"
+                  readOnly
                   className="text-gray-400 bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-[#B9D7EA] focus:border-[#B9D7EA] block w-full p-2.5 placeholder-gray-400 focus:ring-2 focus:outline-none"
                   {...register("email")}
                 />
@@ -111,7 +156,7 @@ const AddClassForm = () => {
                   Price*
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   name="price"
                   id="price"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#B9D7EA] focus:border-[#B9D7EA] block w-full p-2.5 placeholder-gray-400 focus:ring-2 focus:outline-none"
