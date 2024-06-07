@@ -66,6 +66,8 @@ const ClassCard = ({ classItem, teacherBtn, payBtn, handleDelete }) => {
               <DeleteModal
                 isOpen={isOpen}
                 closeModal={closeModal}
+                handleDelete={handleDelete}
+                id={_id}
               ></DeleteModal>
 
               <Link to="">

@@ -4,14 +4,18 @@ import useAxiosPublic from "../hook/useAxiosPublic";
 const useClasses = () => {
   const axiosPublic = useAxiosPublic();
 
-  const { data: classes = [], isLoading } = useQuery({
+  const {
+    data: classes = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["classes"],
     queryFn: async () => {
       const { data } = await axiosPublic.get("/classes");
       return data;
     },
   });
-  return [classes, isLoading];
+  return [classes, isLoading, refetch];
   // if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 };
 

@@ -1,12 +1,35 @@
+import { useMutation } from "@tanstack/react-query";
 import ClassCard from "../../../../components/ClassCard";
 import useClasses from "../../../../hooks/useClasses";
 import LoadingSpinner from "../../../shared/LoadingSpinner";
+import useAxiosPublic from "../../../../hook/useAxiosPublic";
+import toast from "react-hot-toast";
 
 const MyClasses = () => {
-  const [classes, isLoading] = useClasses();
+  const [classes, isLoading, refetch] = useClasses();
+  const axiosPublic = useAxiosPublic();
 
-  const handleDelete = (id) => {
+  // delete
+  const { mutateAsync } = useMutation({
+    mutationFn: async (id) => {
+      const { data } = await axiosPublic.delete(`/classes/${id}`);
+      return data;
+    },
+    onSuccess: (data) => {
+      console.log(data);
+      toast.success("Class deleted successfully.");
+      refetch();
+    },
+  });
+
+  const handleDelete = async (id) => {
     console.log("will delete ->", id);
+    try {
+      await mutateAsync(id);
+    } catch (err) {
+      console.log(err.message);
+      toast.error(err.message);
+    }
   };
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
