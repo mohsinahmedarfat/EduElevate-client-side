@@ -1,8 +1,20 @@
+import { useState } from "react";
+import { FaRegTrashCan } from "react-icons/fa6";
+import { FiEdit } from "react-icons/fi";
+import { PiArrowFatRightBold } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import DeleteModal from "./modal/DeleteModal";
 
-const ClassCard = ({ classItem }) => {
-  console.log(classItem);
+const ClassCard = ({ classItem, teacherBtn, payBtn, handleDelete }) => {
   const { _id, title, image, description, price, teacher } = classItem;
+
+  // for delete modal
+  const [isOpen, setIsOpen] = useState(false);
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  // for update modal
 
   return (
     <div className="card max-w-2xl overflow-hidden bg-white rounded-lg shadow-md">
@@ -36,11 +48,41 @@ const ClassCard = ({ classItem }) => {
               </div>
             </div>
           </div>
-          <Link to={`/classes/${_id}`}>
-            <button className="w-full mt-5 bg-[#769FCD] hover:bg-[#B9D7EA] text-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-              Enroll
-            </button>
-          </Link>
+
+          {teacherBtn && (
+            <div className="flex justify-evenly">
+              <Link to="">
+                <button className=" mt-5 bg-cyan-500 hover:bg-opacity-70 text-white  focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                  <FiEdit />
+                </button>
+              </Link>
+
+              <button
+                onClick={() => setIsOpen(true)}
+                className=" mt-5 bg-red-400 hover:bg-opacity-70 text-white  focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              >
+                <FaRegTrashCan />
+              </button>
+              <DeleteModal
+                isOpen={isOpen}
+                closeModal={closeModal}
+              ></DeleteModal>
+
+              <Link to="">
+                <button className=" mt-5 bg-[#769FCD] hover:bg-opacity-70 text-white  focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                  <PiArrowFatRightBold />
+                </button>
+              </Link>
+            </div>
+          )}
+
+          {payBtn && (
+            <Link to={`/classes/${_id}`}>
+              <button className="w-full mt-5 bg-[#769FCD] hover:bg-[#B9D7EA] text-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                Enroll
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

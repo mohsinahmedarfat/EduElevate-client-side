@@ -8,9 +8,10 @@ import Register from "../pages/authentication/Register";
 import Login from "../pages/authentication/Login";
 import DashboardLayout from "../layout/dashboard/DashboardLayout";
 import Profile from "../pages/dashboard/common/Profile";
-import MyClasses from "../pages/dashboard/teacher/MyClasses";
 import AddClass from "../pages/dashboard/teacher/add-class/AddClass";
 import ClassDetails from "../pages/AllClasses/ClassDetails";
+import PrivateRoute from "./PrivateRoute";
+import MyClasses from "../pages/dashboard/teacher/my-classes/MyClasses";
 
 const Router = createBrowserRouter([
   {
@@ -28,7 +29,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "/classes/:id",
-        element: <ClassDetails></ClassDetails>,
+        element: (
+          <PrivateRoute>
+            <ClassDetails></ClassDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/teach-on-eduelevate",
