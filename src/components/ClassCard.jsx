@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ClassCard = ({ classItem }) => {
   console.log(classItem);
-  const { title, image, description, price, teacher } = classItem;
+  const { _id, title, image, description, price, teacher } = classItem;
 
   return (
     <div className="card max-w-2xl overflow-hidden bg-white rounded-lg shadow-md">
@@ -36,10 +36,11 @@ const ClassCard = ({ classItem }) => {
               </div>
             </div>
           </div>
-
-          <button className="w-full mt-5 bg-[#769FCD] hover:bg-[#B9D7EA] text-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-            <Link to="">Enroll</Link>
-          </button>
+          <Link to={`/classes/${_id}`}>
+            <button className="w-full mt-5 bg-[#769FCD] hover:bg-[#B9D7EA] text-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+              Enroll
+            </button>
+          </Link>
         </div>
       </div>
     </div>

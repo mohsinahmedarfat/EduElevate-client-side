@@ -10,6 +10,7 @@ import DashboardLayout from "../layout/dashboard/DashboardLayout";
 import Profile from "../pages/dashboard/common/Profile";
 import MyClasses from "../pages/dashboard/teacher/MyClasses";
 import AddClass from "../pages/dashboard/teacher/add-class/AddClass";
+import ClassDetails from "../pages/AllClasses/ClassDetails";
 
 const Router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const Router = createBrowserRouter([
       {
         path: "/all-classes",
         element: <AllClasses></AllClasses>,
+      },
+      {
+        path: "/classes/:id",
+        element: <ClassDetails></ClassDetails>,
       },
       {
         path: "/teach-on-eduelevate",
