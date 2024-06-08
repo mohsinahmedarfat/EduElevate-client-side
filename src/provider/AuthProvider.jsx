@@ -46,13 +46,29 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+  // save a user
+  const saveUser = async (user) => {
+    const currentUser = {
+      name: user?.displayName,
+      email: user?.email,
+      photo: user?.photoURL,
+      role: "student",
+      status: "Verified",
+    };
+
+    const { data } = await axiosPublic.put("/user", currentUser);
+    return data;
+  };
+
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currenUser) => {
-      setUser(currenUser);
-      console.log("curren user ->", currenUser);
-      if (currenUser) {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      console.log("curren user ->", currentUser);
+      if (currentUser) {
+        saveUser(currentUser);
+
         // get token & store client
-        const userInfo = { email: currenUser.email };
+        const userInfo = { email: currentUser.email };
         axiosPublic.post("/jwt", userInfo).then((res) => {
           if (res.data.token) {
             localStorage.setItem("access-token", res.data.token);
