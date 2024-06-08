@@ -42,6 +42,7 @@ const MyClasses = () => {
             classItem={classItem}
             teacherBtn={true}
             handleDelete={handleDelete}
+            refetch={refetch}
           ></ClassCard>
         ))}
       </div>

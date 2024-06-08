@@ -61,14 +61,14 @@ const AddClassForm = () => {
   return (
     <section className="py-10 ">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
-        <div className="w-full bg-[#F7FBFC] rounded-lg shadow md:mt-0 sm:max-w-xl xl:p-0 border border-gray-300">
+        <div className="w-full bg-[#e7f5f8] rounded-lg shadow md:mt-0 sm:max-w-xl xl:p-0 border border-[#B9D7EA]">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
               Add a Class
             </h1>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="space-y-4 md:space-y-6"
+              className="space-y-4 p-6 rounded-xl md:space-y-6 bg-[#F7FBFC]"
             >
               <div>
                 <label className="block mb-2 text-sm font-medium text-gray-900">
@@ -78,7 +78,7 @@ const AddClassForm = () => {
                   type="text"
                   name="title"
                   id="title"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#B9D7EA] focus:border-[#B9D7EA] block w-full p-2.5 placeholder-gray-400 focus:ring-2 focus:outline-none"
+                  className="bg-gray-50 border border-[#B9D7EA] text-gray-900 sm:text-sm rounded-lg focus:ring-[#B9D7EA] focus:border-[#B9D7EA] block w-full p-2.5 placeholder-gray-400 focus:ring-2 focus:outline-none"
                   placeholder="Class title"
                   {...register("title", { required: true })}
                 />
@@ -94,9 +94,8 @@ const AddClassForm = () => {
                 <input
                   type="text"
                   name="name"
-                  className="text-gray-400 bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-[#B9D7EA] focus:border-[#B9D7EA] block w-full p-2.5 placeholder-gray-400 focus:ring-2 focus:outline-none"
+                  className="text-gray-400 bg-gray-50 border border-[#B9D7EA] sm:text-sm rounded-lg focus:ring-[#B9D7EA] focus:border-[#B9D7EA] block w-full p-2.5 placeholder-gray-400 focus:ring-2 focus:outline-none"
                   defaultValue={user?.displayName}
-                  // defaultValue="Mohsin"
                   readOnly
                   {...register("name")}
                 />
@@ -111,9 +110,8 @@ const AddClassForm = () => {
                   name="email"
                   id="email"
                   defaultValue={user?.email}
-                  // defaultValue="user@gmail.com"
                   readOnly
-                  className="text-gray-400 bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-[#B9D7EA] focus:border-[#B9D7EA] block w-full p-2.5 placeholder-gray-400 focus:ring-2 focus:outline-none"
+                  className="text-gray-400 bg-gray-50 border border-[#B9D7EA] sm:text-sm rounded-lg focus:ring-[#B9D7EA] focus:border-[#B9D7EA] block w-full p-2.5 placeholder-gray-400 focus:ring-2 focus:outline-none"
                   {...register("email")}
                 />
               </div>
@@ -126,7 +124,7 @@ const AddClassForm = () => {
                   type="text"
                   name="image"
                   id="image"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#B9D7EA] focus:border-[#B9D7EA] block w-full p-2.5 placeholder-gray-400 focus:ring-2 focus:outline-none"
+                  className="bg-gray-50 border border-[#B9D7EA] text-gray-900 sm:text-sm rounded-lg focus:ring-[#B9D7EA] focus:border-[#B9D7EA] block w-full p-2.5 placeholder-gray-400 focus:ring-2 focus:outline-none"
                   placeholder="provide a image URL"
                   {...register("image", { required: true })}
                 />
@@ -143,7 +141,7 @@ const AddClassForm = () => {
                   type="text"
                   name="description"
                   id="description"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#B9D7EA] focus:border-[#B9D7EA] block w-full p-2.5 placeholder-gray-400 focus:ring-2 focus:outline-none"
+                  className="bg-gray-50 border border-[#B9D7EA] text-gray-900 sm:text-sm rounded-lg focus:ring-[#B9D7EA] focus:border-[#B9D7EA] block w-full p-2.5 placeholder-gray-400 focus:ring-2 focus:outline-none"
                   {...register("description", { required: true })}
                 />
                 {errors.description && (
@@ -159,7 +157,7 @@ const AddClassForm = () => {
                   type="number"
                   name="price"
                   id="price"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#B9D7EA] focus:border-[#B9D7EA] block w-full p-2.5 placeholder-gray-400 focus:ring-2 focus:outline-none"
+                  className="bg-gray-50 border border-[#B9D7EA] text-gray-900 sm:text-sm rounded-lg focus:ring-[#B9D7EA] focus:border-[#B9D7EA] block w-full p-2.5 placeholder-gray-400 focus:ring-2 focus:outline-none"
                   {...register("price", { required: true })}
                 />
                 {errors.price && (
