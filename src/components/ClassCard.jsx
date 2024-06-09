@@ -74,7 +74,7 @@ const ClassCard = ({
 
               <button
                 onClick={() => setIsOpen(true)}
-                className=" mt-5 bg-red-400 hover:bg-opacity-70 text-white  focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                className="mt-5 bg-red-400 hover:bg-opacity-70 text-white  focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
                 <FaRegTrashCan />
               </button>

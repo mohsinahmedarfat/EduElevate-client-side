@@ -31,7 +31,7 @@ const TeachOnEEForm = () => {
       email: user?.email,
       photo: user?.photoURL,
       role: "student",
-      status: "Requested",
+      status: "Pending",
       teacherReqData,
     };
 
