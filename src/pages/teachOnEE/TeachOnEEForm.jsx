@@ -41,7 +41,7 @@ const TeachOnEEForm = () => {
       if (data.modifiedCount > 0) {
         toast.success("Success! Please wait for admin confirmation.");
       } else {
-        toast.error("Please! Wait for admin approval.");
+        toast.success("Please! Wait for admin approval.");
       }
     } catch (err) {
       console.log(err.message);
@@ -150,7 +150,7 @@ const TeachOnEEForm = () => {
           type="submit"
           className="w-full bg-[#769FCD] hover:bg-[#B9D7EA] text-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
         >
-          Submit for review
+          Submit
         </button>
       </form>
     </div>

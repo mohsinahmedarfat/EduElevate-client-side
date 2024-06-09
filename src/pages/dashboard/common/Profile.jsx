@@ -1,9 +1,13 @@
 import useAuth from "../../../hooks/useAuth";
+import useRole from "../../../hooks/useRole";
+import LoadingSpinner from "../../shared/LoadingSpinner";
 
 const Profile = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+  const [role, isLoading] = useRole();
 
-  console.log(user);
+  if (loading || isLoading) return <LoadingSpinner></LoadingSpinner>;
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="bg-white shadow-lg rounded-2xl w-3/5">
@@ -22,7 +26,7 @@ const Profile = () => {
           </a>
 
           <p className="p-2 px-4 text-xs text-white bg-[#769FCD] rounded-full mt-3">
-            Admin
+            {role[0].toUpperCase() + role.substring(1)}
           </p>
           <p className="mt-2 text-xl font-medium text-gray-800 ">
             User Id: {user?.uid}
@@ -39,15 +43,6 @@ const Profile = () => {
                 Email
                 <span className="font-bold text-black ">{user?.email}</span>
               </p>
-              {/* 
-              <div>
-                <button className="bg-[#F43F5E] px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1">
-                  Update Profile
-                </button>
-                <button className="bg-[#F43F5E] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053]">
-                  Change Password
-                </button>
-              </div> */}
             </div>
           </div>
         </div>

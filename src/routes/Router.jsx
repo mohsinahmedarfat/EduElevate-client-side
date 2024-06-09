@@ -12,6 +12,10 @@ import ClassDetails from "../pages/AllClasses/ClassDetails";
 import PrivateRoute from "./PrivateRoute";
 import MyClasses from "../pages/dashboard/teacher/my-classes/MyClasses";
 import TeachOnEE from "../pages/teachOnEE/TeachOnEE";
+import EnrolledClasses from "../pages/dashboard/student/my-enroll-class/EnrolledClasses";
+import TeacherRequest from "../pages/dashboard/admin/teacher-request/TeacherRequest";
+import AllUsers from "../pages/dashboard/admin/all-users/AllUsers";
+import AllClassesAdmin from "../pages/dashboard/admin/all-classes/AllClassesAdmin";
 
 const Router = createBrowserRouter([
   {
@@ -55,12 +59,22 @@ const Router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
       {
         index: true,
         element: <Profile></Profile>,
       },
+      // student
+      {
+        path: "enroll-class",
+        element: <EnrolledClasses></EnrolledClasses>,
+      },
+      // teacher
       {
         path: "add-class",
         element: <AddClass></AddClass>,
@@ -68,6 +82,19 @@ const Router = createBrowserRouter([
       {
         path: "my-classes",
         element: <MyClasses></MyClasses>,
+      },
+      // admin
+      {
+        path: "teacher-request",
+        element: <TeacherRequest></TeacherRequest>,
+      },
+      {
+        path: "all-users",
+        element: <AllUsers></AllUsers>,
+      },
+      {
+        path: "all-classes-admin",
+        element: <AllClassesAdmin></AllClassesAdmin>,
       },
     ],
   },

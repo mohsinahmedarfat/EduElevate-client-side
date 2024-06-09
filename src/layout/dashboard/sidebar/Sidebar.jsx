@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { GrLogout } from "react-icons/gr";
-import { FcSettings } from "react-icons/fc";
-import { BsFillHouseAddFill, BsFingerprint } from "react-icons/bs";
-import { GrUserAdmin } from "react-icons/gr";
 import { AiOutlineBars, AiOutlineVideoCameraAdd } from "react-icons/ai";
-import { BsGraphUp } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { Link } from "react-router-dom";
-import { MdHomeWork, MdOutlineClass } from "react-icons/md";
+import { MdOutlineClass } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
+import useRole from "../../../hooks/useRole";
+import MenuItem from "./menu/MenuItem";
+import TeacherMenu from "./menu/TeacherMenu";
+import StudentMenu from "./menu/StudentMenu";
+import AdminMenu from "./menu/AdminMenu";
 
 const Sidebar = () => {
   const { logOut } = useAuth();
   const [isActive, setActive] = useState(false);
+  const [role] = useRole();
+  console.log(role);
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
@@ -63,48 +65,9 @@ const Sidebar = () => {
             {/* Conditional toggle button here.. */}
 
             {/*  Menu Items */}
-            <nav>
-              {/* Statistics */}
-              <NavLink
-                to="statistics"
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#B9D7EA]   hover:text-gray-700 ${
-                    isActive ? "bg-[#B9D7EA]  text-gray-700" : "text-gray-600"
-                  }`
-                }
-              >
-                <BsGraphUp className="w-5 h-5" />
-
-                <span className="mx-4 font-medium">Statistics</span>
-              </NavLink>
-
-              {/* Add Room */}
-              <NavLink
-                to="add-class"
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#B9D7EA]   hover:text-gray-700 ${
-                    isActive ? "bg-[#B9D7EA]  text-gray-700" : "text-gray-600"
-                  }`
-                }
-              >
-                <AiOutlineVideoCameraAdd className="w-5 h-5" />
-
-                <span className="mx-4 font-medium">Add Class</span>
-              </NavLink>
-              {/* My Class */}
-              <NavLink
-                to="my-classes"
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#B9D7EA]   hover:text-gray-700 ${
-                    isActive ? "bg-[#B9D7EA]  text-gray-700" : "text-gray-600"
-                  }`
-                }
-              >
-                <MdOutlineClass className="w-5 h-5" />
-
-                <span className="mx-4 font-medium">My Classes</span>
-              </NavLink>
-            </nav>
+            {role === "student" && <StudentMenu></StudentMenu>}
+            {role === "teacher" && <TeacherMenu></TeacherMenu>}
+            {role === "admin" && <AdminMenu></AdminMenu>}
           </div>
         </div>
 
@@ -112,19 +75,12 @@ const Sidebar = () => {
           <hr />
 
           {/* Profile Menu */}
-          <NavLink
-            to="/dashboard"
-            end
-            className={({ isActive }) =>
-              `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#B9D7EA]   hover:text-gray-700 ${
-                isActive ? "bg-[#B9D7EA]  text-gray-700" : "text-gray-600"
-              }`
-            }
-          >
-            <CgProfile className="w-5 h-5" />
+          <MenuItem
+            address="/dashboard"
+            icon={CgProfile}
+            label="Profile"
+          ></MenuItem>
 
-            <span className="mx-4 font-medium">Profile</span>
-          </NavLink>
           <button
             onClick={logOut}
             className="flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-[#B9D7EA]   hover:text-gray-700 transition-colors duration-300 transform"
