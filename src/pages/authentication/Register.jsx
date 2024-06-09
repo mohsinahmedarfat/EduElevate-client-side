@@ -28,6 +28,15 @@ const Register = () => {
     const { name, photo, email, password } = data;
     console.log(data);
 
+    const userData = {
+      name,
+      photo,
+      email,
+      password,
+      role: "student",
+      status: "Verified",
+    };
+
     // create user with email and password
     try {
       const result = await createUser(email, password);

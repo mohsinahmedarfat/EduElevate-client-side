@@ -3,7 +3,6 @@ import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/home/Home";
 import Root from "../layout/Root";
 import AllClasses from "../pages/AllClasses/AllClasses";
-import TeachOnEEForm from "../pages/teachOnEE/TeachOnEEForm";
 import Register from "../pages/authentication/Register";
 import Login from "../pages/authentication/Login";
 import DashboardLayout from "../layout/dashboard/DashboardLayout";
@@ -12,6 +11,7 @@ import AddClass from "../pages/dashboard/teacher/add-class/AddClass";
 import ClassDetails from "../pages/AllClasses/ClassDetails";
 import PrivateRoute from "./PrivateRoute";
 import MyClasses from "../pages/dashboard/teacher/my-classes/MyClasses";
+import TeachOnEE from "../pages/teachOnEE/TeachOnEE";
 
 const Router = createBrowserRouter([
   {
@@ -37,7 +37,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "/teach-on-eduelevate",
-        element: <TeachOnEEForm></TeachOnEEForm>,
+        element: (
+          <PrivateRoute>
+            <TeachOnEE></TeachOnEE>
+          </PrivateRoute>
+        ),
       },
     ],
   },
