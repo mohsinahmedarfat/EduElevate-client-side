@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../hook/useAxiosPublic";
 import LoadingSpinner from "../../../shared/LoadingSpinner";
 import UserDataRow from "./UserDataRow";
+import toast from "react-hot-toast";
 
 const AllUsers = () => {
   const axiosPublic = useAxiosPublic();
@@ -19,6 +20,7 @@ const AllUsers = () => {
     },
   });
 
+  // user mutation for make admin
   const { mutateAsync } = useMutation({
     mutationFn: async (id) => {
       const { data } = await axiosPublic.patch(`/user/${id}`);
@@ -26,6 +28,7 @@ const AllUsers = () => {
     },
     onSuccess: (data) => {
       console.log(data);
+      toast.success("User role updated to Admin successfully.");
       refetch();
     },
   });

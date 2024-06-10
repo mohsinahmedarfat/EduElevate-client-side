@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { GrLogout } from "react-icons/gr";
-import { AiOutlineBars, AiOutlineVideoCameraAdd } from "react-icons/ai";
+import { AiOutlineBars } from "react-icons/ai";
 import useAuth from "../../../hooks/useAuth";
 import { Link } from "react-router-dom";
-import { MdOutlineClass } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import useRole from "../../../hooks/useRole";
 import MenuItem from "./menu/MenuItem";

@@ -16,7 +16,6 @@ const useClasses = () => {
     },
   });
   return [classes, isLoading, refetch];
-  // if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 };
 
 export default useClasses;

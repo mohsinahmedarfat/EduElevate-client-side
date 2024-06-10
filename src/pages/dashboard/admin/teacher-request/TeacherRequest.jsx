@@ -1,7 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../hook/useAxiosPublic";
 import LoadingSpinner from "../../../shared/LoadingSpinner";
 import TeacherDataRow from "./TeacherDataRow";
+import toast from "react-hot-toast";
 
 const TeacherRequest = () => {
   const axiosPublic = useAxiosPublic();
@@ -18,6 +19,56 @@ const TeacherRequest = () => {
       return data;
     },
   });
+
+  // =====================================================================
+  // used mutation for approve teacher request
+  const { mutateAsync: mutateAsyncApprove } = useMutation({
+    mutationFn: async (id) => {
+      const { data } = await axiosPublic.patch(`/teacher-approve/${id}`);
+      return data;
+    },
+    onSuccess: (data) => {
+      console.log(data);
+      toast.success("Teacher request accepted successfully.");
+      refetch();
+    },
+  });
+
+  // handle approve
+  const handleApprove = async (id) => {
+    console.log("will approve", id);
+
+    try {
+      await mutateAsyncApprove(id);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // =====================================================================
+  // used mutation for reject teacher request
+  const { mutateAsync } = useMutation({
+    mutationFn: async (id) => {
+      const { data } = await axiosPublic.patch(`/teacher-reject/${id}`);
+      return data;
+    },
+    onSuccess: (data) => {
+      console.log(data);
+      toast.success("Teacher request rejected successfully.");
+      refetch();
+    },
+  });
+
+  // handle rejected
+  const handleReject = async (id) => {
+    console.log("will rejected ->", id);
+
+    try {
+      await mutateAsync(id);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
@@ -91,6 +142,8 @@ const TeacherRequest = () => {
                       key={teacherRequestUser._id}
                       teacherRequestUser={teacherRequestUser}
                       refetch={refetch}
+                      handleReject={handleReject}
+                      handleApprove={handleApprove}
                     ></TeacherDataRow>
                   ))}
                 </tbody>

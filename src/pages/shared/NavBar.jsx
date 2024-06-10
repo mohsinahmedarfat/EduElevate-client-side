@@ -1,8 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import LoadingSpinner from "./LoadingSpinner";
+import useRole from "../../hooks/useRole";
 
 const NavBar = () => {
-  const { user, logout } = useAuth();
+  const { user, logout, loading } = useAuth();
+
+  const [role] = useRole();
+  console.log(role);
 
   const navLinks = (
     <>
@@ -10,8 +15,8 @@ const NavBar = () => {
         <NavLink
           className={`${({ isActive }) =>
             isActive
-              ? "text-[#769FCD] px-3 py-2 mx-3"
-              : "px-3 py-2 mx-3 hover:text-[#769FCD]"}`}
+              ? "text-[#769FCD] px-3 py-2 mx-3 font-semibold"
+              : "px-3 py-2 mx-3 hover:text-[#769FCD] "}`}
           to="/"
         >
           Home
@@ -21,7 +26,7 @@ const NavBar = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "text-[#769FCD] px-3 py-2 mx-3"
+              ? "text-[#769FCD] px-3 py-2 mx-3 font-semibold"
               : "px-3 py-2 mx-3 hover:text-[#769FCD]"
           }
           to="/all-classes"
@@ -29,20 +34,26 @@ const NavBar = () => {
           All Classes
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          className={({ isActive }) =>
-            isActive
-              ? "text-[#769FCD] px-3 py-2 mx-3"
-              : "px-3 py-2 mx-3 hover:text-[#769FCD]"
-          }
-          to="/teach-on-eduelevate"
-        >
-          Teach on EduElevate
-        </NavLink>
-      </li>
+      {role === "teacher" ? (
+        <></>
+      ) : (
+        <li>
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? "text-[#769FCD] px-3 py-2 mx-3 font-semibold"
+                : "px-3 py-2 mx-3 hover:text-[#769FCD] "
+            }
+            to="/teach-on-eduelevate"
+          >
+            Teach on EduElevate
+          </NavLink>
+        </li>
+      )}
     </>
   );
+
+  if (loading) return <LoadingSpinner></LoadingSpinner>;
 
   return (
     <div className="navbar bg-base-100 px-5 shadow sticky top-0 z-50">

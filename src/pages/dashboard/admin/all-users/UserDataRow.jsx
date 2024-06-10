@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MakeAdminModal from "../../../../components/modal/MakeAdminModal";
 
-const UserDataRow = ({ user, refetch, handleMakeAdmin }) => {
+const UserDataRow = ({ user, handleMakeAdmin }) => {
   // for make admin modal
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => {
