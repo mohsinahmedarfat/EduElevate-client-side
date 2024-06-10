@@ -150,7 +150,7 @@ const TeachOnEEForm = () => {
           type="submit"
           className="w-full bg-[#769FCD] hover:bg-[#B9D7EA] text-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
         >
-          Submit
+          Submit for review
         </button>
       </form>
     </div>

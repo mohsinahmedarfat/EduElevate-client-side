@@ -1,6 +1,10 @@
+import { Link } from "react-router-dom";
 import instructorImage from "../../assets/images/instructor.jpg";
+import useRole from "../../hooks/useRole";
 
 const BeInstructorSection = () => {
+  const [role] = useRole();
+
   return (
     <div className="hero">
       <div className="hero-content lg:px-10 gap-10 grid grid-cols-1 lg:grid-cols-3">
@@ -23,9 +27,14 @@ const BeInstructorSection = () => {
             you do best—teaching. Start your journey with us today and be a part
             of the future of education!
           </p>
-          <button className="btn bg-[#769FCD] text-white hover:bg-[#B9D7EA]">
-            Start teaching today
-          </button>
+          <Link to="/teach-on-eduelevate">
+            <button
+              disabled={role === "teacher"}
+              className="btn bg-[#769FCD] text-white hover:bg-[#B9D7EA]"
+            >
+              Start teaching today
+            </button>
+          </Link>
         </div>
       </div>
     </div>
