@@ -23,7 +23,9 @@ const AddClassForm = () => {
     },
     onSuccess: () => {
       console.log("data saved successfully");
-      toast.success("Class added successfully");
+      toast.success(
+        "Class details sent to Admin. Please! Wait for Admin approval."
+      );
       navigate("/dashboard/my-classes");
     },
   });
@@ -44,6 +46,7 @@ const AddClassForm = () => {
       image,
       description,
       price: parseFloat(price),
+      status: "Pending",
       teacher,
     };
     console.table(classData);

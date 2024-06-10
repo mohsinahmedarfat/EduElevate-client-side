@@ -1,22 +1,21 @@
 import { useState } from "react";
-import TeacherRejectModal from "../../../../components/modal/TeacherRejectModal";
-import TeacherApproveModal from "../../../../components/modal/TeacherApproveModal";
+import ClassRejectModal from "../../../../components/modal/ClassRejectModal";
+import ClassApproveModal from "../../../../components/modal/ClassApproveModal";
 
-const TeacherDataRow = ({
-  teacherRequestUser,
+const AllClassesAdminDataRow = ({
+  classRequest,
   handleReject,
   handleApprove,
 }) => {
-  const { photo, name, teacherReqData, status } = teacherRequestUser;
-  const { title, experience, category } = teacherReqData;
+  const { _id, image, title, email, description, status } = classRequest;
 
-  // for teacher reject modal
+  // for class reject modal
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => {
     setIsOpen(false);
   };
 
-  // for teacher approve modal
+  // for class approve modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const closeApproveModal = () => {
     setIsModalOpen(false);
@@ -25,11 +24,7 @@ const TeacherDataRow = ({
   return (
     <tr>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <img src={photo} className="size-10" alt="" />
-      </td>
-
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">{name}</p>
+        <img src={image} className="w-[1000px] h-20" alt="" />
       </td>
 
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -37,11 +32,13 @@ const TeacherDataRow = ({
       </td>
 
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">{experience}</p>
+        <p className="text-gray-900 whitespace-no-wrap">{email}</p>
       </td>
 
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">{category}</p>
+        <p className="text-gray-900 whitespace-no-wrap">
+          {description.slice(0, 80)}......
+        </p>
       </td>
 
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -56,45 +53,50 @@ const TeacherDataRow = ({
         </p>
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="flex flex-col items-center justify-center gap-6 px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <button
-          disabled={
-            teacherRequestUser?.status === "Rejected" ||
-            teacherRequestUser?.status === "Accepted"
-          }
+          disabled={status === "Rejected" || status === "Accepted"}
           onClick={() => setIsModalOpen(true)}
           className="btn btn-sm border-none bg-green-100 hover:bg-green-400 text-green-800"
         >
           Approve
         </button>
-        <TeacherApproveModal
+        <ClassApproveModal
           isOpen={isModalOpen}
           closeModal={closeApproveModal}
           handleApprove={handleApprove}
-          id={teacherRequestUser?._id}
-        ></TeacherApproveModal>
-      </td>
+          id={_id}
+        ></ClassApproveModal>
+        {/* <TeacherApproveModal
+          isOpen={isModalOpen}
+          closeModal={closeApproveModal}
+          handleApprove={handleApprove}
+          id={classRequests?._id}
+        ></TeacherApproveModal> */}
 
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <button
-          disabled={
-            teacherRequestUser?.status === "Rejected" ||
-            teacherRequestUser?.status === "Accepted"
-          }
+          disabled={status === "Rejected" || status === "Accepted"}
           onClick={() => setIsOpen(true)}
           className="btn btn-sm border-none bg-red-100 hover:bg-red-400 text-red-800"
         >
           Reject
         </button>
-        <TeacherRejectModal
+        <ClassRejectModal
           isOpen={isOpen}
           closeModal={closeModal}
           handleReject={handleReject}
-          id={teacherRequestUser?._id}
-        ></TeacherRejectModal>
+          id={_id}
+        ></ClassRejectModal>
+
+        <button
+          disabled={status === "Rejected" || status === "Pending"}
+          className="btn w-28 btn-sm border-none bg-blue-100 hover:bg-blue-400 text-blue-800"
+        >
+          See Progress
+        </button>
       </td>
     </tr>
   );
 };
 
-export default TeacherDataRow;
+export default AllClassesAdminDataRow;

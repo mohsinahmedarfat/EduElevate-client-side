@@ -5,9 +5,7 @@ import useRole from "../../hooks/useRole";
 
 const NavBar = () => {
   const { user, logout, loading } = useAuth();
-
   const [role] = useRole();
-  console.log(role);
 
   const navLinks = (
     <>
@@ -34,9 +32,7 @@ const NavBar = () => {
           All Classes
         </NavLink>
       </li>
-      {role === "teacher" ? (
-        <></>
-      ) : (
+      {role === "student" ? (
         <li>
           <NavLink
             className={({ isActive }) =>
@@ -49,6 +45,8 @@ const NavBar = () => {
             Teach on EduElevate
           </NavLink>
         </li>
+      ) : (
+        <></>
       )}
     </>
   );

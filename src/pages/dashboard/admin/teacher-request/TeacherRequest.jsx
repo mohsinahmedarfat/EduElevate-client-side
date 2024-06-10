@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 const TeacherRequest = () => {
   const axiosPublic = useAxiosPublic();
 
-  //   fetching users data
+  //   fetching "Pending", "Rejected", "Accepted" users data
   const {
     data: teacherRequestUsers = [],
     isLoading,

@@ -46,7 +46,7 @@ const ClassCard = ({
           <div className="flex items-center">
             <div className="flex gap-3 items-center">
               <img
-                className="object-cover h-10 rounded-full"
+                className="object-cover size-10 rounded-full"
                 src={teacher?.image}
                 alt="Avatar"
               />
