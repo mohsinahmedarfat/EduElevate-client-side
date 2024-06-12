@@ -43,13 +43,14 @@ const Slider = () => {
             />
             <div className="text-center space-y-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
               <h1 className="text-3xl md:text-5xl font-bold text-white">
-                Explore the Wonders of the World with Us!
+                Empower Your Learning Journey with Expert Tutors
               </h1>
               <p className="text-white">
-                Embark on an unforgettable journey to discover breathtaking
-                landscapes, vibrant cultures, and hidden gems across the globe.
-                Let us be your guide to extraordinary adventures and
-                unforgettable memories. Start your adventure today!
+                Unlock your potential with our comprehensive online courses.
+                Connect with experienced tutors, engage in interactive lessons,
+                and manage your classes effortlessly. Transform your skills and
+                achieve your educational goals with ease. Join us today and
+                start your path to success!
               </p>
             </div>
           </div>
@@ -63,14 +64,14 @@ const Slider = () => {
             />
             <div className="text-center space-y-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
               <h1 className="text-3xl md:text-5xl font-bold text-white">
-                Discover Your Next Adventure
+                Revolutionize Your Education Experience
               </h1>
               <p className="text-white">
-                Escape the ordinary and dive into a world of exploration and
-                wonder. From majestic mountains to pristine beaches, let your
-                wanderlust lead the way. Whether you seek thrill or tranquility,
-                we have got the perfect destination waiting just for you. Let
-                the adventure begin!
+                Discover the future of learning with our state-of-the-art online
+                platform. Whether you're a student seeking knowledge or a tutor
+                sharing expertise, we provide the tools for a seamless and
+                enriching educational journey. Enhance your skills, track your
+                progress, and achieve your dreams with us!
               </p>
             </div>
           </div>
@@ -84,14 +85,14 @@ const Slider = () => {
             />
             <div className="text-center space-y-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
               <h1 className="text-3xl md:text-5xl font-bold text-white">
-                Unlock the World's Wonders
+                Master New Skills Anytime, Anywhere
               </h1>
               <p className="text-white">
-                Open the door to a world of enchantment and discovery. Immerse
-                yourself in diverse cultures, stunning landscapes, and
-                unforgettable experiences. With every journey, create memories
-                that will last a lifetime. Let's unlock the wonders of the world
-                together!
+                Experience the convenience of online learning tailored to your
+                schedule. Our diverse range of courses, led by industry experts,
+                ensures you gain valuable knowledge and practical skills. Join
+                our community of learners and take control of your education
+                from the comfort of your home!
               </p>
             </div>
           </div>

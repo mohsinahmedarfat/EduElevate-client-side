@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { createUser, updateUserProfile, signInWithGoogle, setUser } =
+  const { createUser, updateUserProfile, signInWithGoogle, setUser, saveUser } =
     useAuth();
   const navigate = useNavigate();
   const {
@@ -30,9 +30,17 @@ const Register = () => {
 
     // create user with email and password
     try {
+      const currentUser = {
+        name,
+        email,
+        photo,
+        role: "student",
+        status: "Verified",
+      };
+
       const result = await createUser(email, password);
       console.log(result);
-
+      saveUser(currentUser);
       await updateUserProfile(name, photo);
 
       // Optimistic UI update

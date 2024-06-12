@@ -13,7 +13,8 @@ const ClassCard = ({
   handleDelete,
   refetch,
 }) => {
-  const { _id, title, image, description, price, teacher } = classItem;
+  const { _id, title, image, description, price, teacher, status } = classItem;
+  console.log(classItem);
 
   // for delete modal
   const [isOpen, setIsOpen] = useState(false);
@@ -31,14 +32,9 @@ const ClassCard = ({
       <div className="card-body p-6">
         <div className="flex flex-col flex-auto">
           <span className=" font-medium text-blue-600 uppercase">${price}</span>
-          <a
-            href="#"
-            className="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform hover:text-gray-600 hover:underline"
-            tabIndex="0"
-            role="link"
-          >
+          <h3 className="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform hover:text-gray-600">
             {title}
-          </a>
+          </h3>
           <p className="mt-2 text-sm text-gray-600 grow">{description}</p>
         </div>
 
@@ -58,10 +54,10 @@ const ClassCard = ({
           </div>
 
           {teacherBtn && (
-            <div className="flex justify-evenly">
+            <div className="flex justify-evenly mt-5">
               <button
                 onClick={() => setIsEditModalOpen(true)}
-                className=" mt-5 bg-cyan-500 hover:bg-opacity-70 text-white  focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                className="btn btn-sm bg-cyan-500 hover:bg-cyan-400 text-white  focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
                 <FiEdit />
               </button>
@@ -74,7 +70,7 @@ const ClassCard = ({
 
               <button
                 onClick={() => setIsOpen(true)}
-                className="mt-5 bg-red-400 hover:bg-opacity-70 text-white  focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                className="btn btn-sm bg-red-400 hover:bg-red-300 text-white  focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
                 <FaRegTrashCan />
               </button>
@@ -86,7 +82,10 @@ const ClassCard = ({
               ></DeleteModal>
 
               <Link to="">
-                <button className=" mt-5 bg-[#769FCD] hover:bg-opacity-70 text-white  focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                <button
+                  disabled={status !== "Accepted"}
+                  className="btn btn-sm bg-[#769FCD] hover:bg-[#9cb3cc] text-white  focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                >
                   <PiArrowFatRightBold />
                 </button>
               </Link>

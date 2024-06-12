@@ -1,11 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hook/useAxiosPublic";
 import LoadingSpinner from "../shared/LoadingSpinner";
-import { Link, ScrollRestoration, useParams } from "react-router-dom";
+import { ScrollRestoration, useParams } from "react-router-dom";
+import { useState } from "react";
+import EnrollModal from "../../components/modal/EnrollModal";
 
 const ClassDetails = () => {
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
+
+  // for teacher reject modal
+  const [isOpen, setIsOpen] = useState(false);
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   const { data: singleClass = [], isLoading } = useQuery({
     queryKey: ["singleClass", id],
@@ -19,7 +27,6 @@ const ClassDetails = () => {
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
-  console.log(singleClass);
   return (
     <div>
       <ScrollRestoration></ScrollRestoration>
@@ -63,11 +70,17 @@ const ClassDetails = () => {
               </span>
             </div>
 
-            <Link to="">
-              <button className="w-full mt-5 bg-[#769FCD] hover:bg-[#97c6e3] text-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                Pay
-              </button>
-            </Link>
+            <button
+              onClick={() => setIsOpen(true)}
+              className="w-full mt-5 bg-[#769FCD] hover:bg-[#97c6e3] text-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            >
+              Pay
+            </button>
+            <EnrollModal
+              isOpen={isOpen}
+              closeModal={closeModal}
+              singleClass={singleClass}
+            ></EnrollModal>
           </div>
         </div>
       </div>

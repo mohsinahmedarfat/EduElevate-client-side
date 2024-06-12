@@ -6,10 +6,8 @@ import toast from "react-hot-toast";
 import useAuth from "../../../../hooks/useAuth";
 
 const MyClasses = () => {
-  // const [classes, isLoading, refetch] = useClasses();
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
-  console.log(user);
 
   const {
     data: classes = [],

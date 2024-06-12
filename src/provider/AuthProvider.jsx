@@ -47,15 +47,7 @@ const AuthProvider = ({ children }) => {
   };
 
   // save a user
-  const saveUser = async (user) => {
-    const currentUser = {
-      name: user?.displayName,
-      email: user?.email,
-      photo: user?.photoURL,
-      role: "student",
-      status: "Verified",
-    };
-
+  const saveUser = async (currentUser) => {
     const { data } = await axiosPublic.put("/user", currentUser);
     return data;
   };
@@ -65,8 +57,6 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       console.log("curren user ->", currentUser);
       if (currentUser) {
-        saveUser(currentUser);
-
         // get token & store client
         const userInfo = { email: currentUser.email };
         axiosPublic.post("/jwt", userInfo).then((res) => {
@@ -96,6 +86,7 @@ const AuthProvider = ({ children }) => {
     signInWithGoogle,
     logout,
     updateUserProfile,
+    saveUser,
   };
 
   return (

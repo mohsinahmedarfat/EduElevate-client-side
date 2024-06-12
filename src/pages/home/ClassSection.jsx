@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import ClassCard from "../../components/ClassCard";
 import useClasses from "../../hooks/useClasses";
+import LoadingSpinner from "../shared/LoadingSpinner";
 
 const ClassSection = () => {
-  const [classes] = useClasses();
-  console.log(classes);
+  const [classes, isLoading] = useClasses();
+
+  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
+
   return (
     <div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
