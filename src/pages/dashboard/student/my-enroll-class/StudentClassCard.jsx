@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const StudentClassCard = ({ enrolledClassItem, continueBtn }) => {
-  const { title, image, teacher } = enrolledClassItem;
+  const { _id, title, image, teacher } = enrolledClassItem;
   return (
     <div className="card max-w-2xl overflow-hidden bg-white rounded-lg shadow-md">
       <img className="object-cover w-full h-64" src={image} alt="Article" />
@@ -29,7 +29,7 @@ const StudentClassCard = ({ enrolledClassItem, continueBtn }) => {
           </div>
 
           {continueBtn && (
-            <Link to="">
+            <Link to={`/dashboard/enroll-class/${_id}`}>
               <button className="w-full mt-5 bg-[#769FCD] hover:bg-[#B9D7EA] text-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                 Continue
               </button>

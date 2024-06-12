@@ -21,8 +21,6 @@ const MyClasses = () => {
     },
   });
 
-  console.log(classes);
-
   // delete
   const { mutateAsync } = useMutation({
     mutationFn: async (id) => {

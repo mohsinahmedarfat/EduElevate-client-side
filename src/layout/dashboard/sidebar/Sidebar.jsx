@@ -11,10 +11,9 @@ import StudentMenu from "./menu/StudentMenu";
 import AdminMenu from "./menu/AdminMenu";
 
 const Sidebar = () => {
-  const { logOut } = useAuth();
+  const { logout } = useAuth();
   const [isActive, setActive] = useState(false);
   const [role] = useRole();
-  console.log(role);
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
@@ -81,7 +80,7 @@ const Sidebar = () => {
           ></MenuItem>
 
           <button
-            onClick={logOut}
+            onClick={logout}
             className="flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-[#B9D7EA]   hover:text-gray-700 transition-colors duration-300 transform"
           >
             <GrLogout className="w-5 h-5" />

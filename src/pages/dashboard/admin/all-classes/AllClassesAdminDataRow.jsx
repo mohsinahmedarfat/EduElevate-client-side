@@ -67,12 +67,6 @@ const AllClassesAdminDataRow = ({
           handleApprove={handleApprove}
           id={_id}
         ></ClassApproveModal>
-        {/* <TeacherApproveModal
-          isOpen={isModalOpen}
-          closeModal={closeApproveModal}
-          handleApprove={handleApprove}
-          id={classRequests?._id}
-        ></TeacherApproveModal> */}
 
         <button
           disabled={status === "Rejected" || status === "Accepted"}

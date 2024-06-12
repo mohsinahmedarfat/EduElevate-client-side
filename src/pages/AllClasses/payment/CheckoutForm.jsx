@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ closeModal, singleClass }) => {
   console.log(singleClass);
-  const { title, image, description, price, teacher } = singleClass;
+  const { title, image, price, teacher } = singleClass;
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
@@ -96,7 +96,6 @@ const CheckoutForm = ({ closeModal, singleClass }) => {
       const paymentInfo = {
         title,
         image,
-        description,
         price,
         teacher,
         email: user?.email,

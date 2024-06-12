@@ -57,6 +57,16 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       console.log("curren user ->", currentUser);
       if (currentUser) {
+        const loggedInUser = {
+          name: currentUser?.displayName,
+          email: currentUser?.email,
+          photo: currentUser?.photoURL,
+          role: "student",
+          status: "Verified",
+        };
+
+        saveUser(loggedInUser);
+
         // get token & store client
         const userInfo = { email: currentUser.email };
         axiosPublic.post("/jwt", userInfo).then((res) => {

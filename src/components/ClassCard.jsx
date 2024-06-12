@@ -14,7 +14,7 @@ const ClassCard = ({
   refetch,
 }) => {
   const { _id, title, image, description, price, teacher, status } = classItem;
-  console.log(classItem);
+  console.log(_id);
 
   // for delete modal
   const [isOpen, setIsOpen] = useState(false);
@@ -57,7 +57,7 @@ const ClassCard = ({
             <div className="flex justify-evenly mt-5">
               <button
                 onClick={() => setIsEditModalOpen(true)}
-                className="btn btn-sm bg-cyan-500 hover:bg-cyan-400 text-white  focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                className="btn btn-sm bg-cyan-500 hover:bg-cyan-400 text-white font-medium rounded-lg px-5 py-2.5 text-center"
               >
                 <FiEdit />
               </button>
@@ -70,7 +70,7 @@ const ClassCard = ({
 
               <button
                 onClick={() => setIsOpen(true)}
-                className="btn btn-sm bg-red-400 hover:bg-red-300 text-white  focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                className="btn btn-sm bg-red-400 hover:bg-red-300 text-white font-medium rounded-lg px-5 py-2.5 text-center"
               >
                 <FaRegTrashCan />
               </button>
@@ -81,14 +81,20 @@ const ClassCard = ({
                 id={_id}
               ></DeleteModal>
 
-              <Link to="">
+              {status === "Accepted" ? (
+                <Link to={`/dashboard/class-progress/${_id}`}>
+                  <button className="btn btn-sm bg-[#769FCD] hover:bg-[#9cb3cc] text-white font-medium rounded-lg px-5 py-2.5 text-center">
+                    <PiArrowFatRightBold />
+                  </button>
+                </Link>
+              ) : (
                 <button
-                  disabled={status !== "Accepted"}
-                  className="btn btn-sm bg-[#769FCD] hover:bg-[#9cb3cc] text-white  focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                  disabled
+                  className="btn btn-sm cursor-not-allowed bg-[#769FCD] hover:bg-[#9cb3cc] text-white font-medium rounded-lg px-5 py-2.5 text-center"
                 >
                   <PiArrowFatRightBold />
                 </button>
-              </Link>
+              )}
             </div>
           )}
 

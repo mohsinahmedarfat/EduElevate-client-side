@@ -125,15 +125,6 @@ const AllClassesAdmin = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* {teacherRequestUsers.map((teacherRequestUser) => (
-                    <TeacherDataRow
-                      key={teacherRequestUser._id}
-                      teacherRequestUser={teacherRequestUser}
-                      refetch={refetch}
-                      handleReject={handleReject}
-                      handleApprove={handleApprove}
-                    ></TeacherDataRow>
-                  ))} */}
                   {classRequests.map((classRequest) => (
                     <AllClassesAdminDataRow
                       key={classRequest._id}

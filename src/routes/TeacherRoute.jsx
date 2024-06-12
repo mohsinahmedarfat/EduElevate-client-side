@@ -5,7 +5,7 @@ import LoadingSpinner from "../pages/shared/LoadingSpinner";
 const TeacherRoute = ({ children }) => {
   const [role, isLoading] = useRole();
 
-  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
+  if (isLoading || role === null) return <LoadingSpinner></LoadingSpinner>;
 
   if (role === "teacher") return children;
 

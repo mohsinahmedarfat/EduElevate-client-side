@@ -31,7 +31,7 @@ const UpdateClassForm = ({ classItem, refetch, setIsEditModalOpen }) => {
   };
 
   return (
-    <div className="w-full p-5 text-gray-800 rounded-xl bg-[#F7FBFC]">
+    <div className="w-full mt-5 p-5 text-gray-800 rounded-xl bg-[#F7FBFC]">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-4 md:space-y-6"
