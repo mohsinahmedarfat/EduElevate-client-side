@@ -28,12 +28,18 @@ EduElevate is a platform that connects students with instructors directly. Stude
 
 ### Technologies used :
 - react
-- headlessui
+- react router dom
+- tailwind css
+- firebase
+- node.js
+- express.js
+- mongoDB
 - stripe
+
+### npm packages used :
+- headlessui
 - tanstack query
 - axios
-- firebase
-- react router dom
 - react hook form
 - react hot toast
 - react spinner
