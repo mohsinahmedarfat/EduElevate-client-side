@@ -45,3 +45,10 @@ EduElevate is a platform that connects students with instructors directly. Stude
 - react spinner
 - react icons
 - swiper
+
+### If you clone this project you've to do some steps:
+- Copy the repository URL
+- Open a terminal window
+- Navigate to your desired location
+- Clone the repository: git clone <URL>
+- Install the npm packages: npm install
