@@ -1,6 +1,7 @@
 # [EDUELEVATE](https://eduelevate.web.app)
 
 Welcome to the repository for my awesome website! You can visit the live site by clicking the website title name.
+EduElevate is a platform that connects students with instructors directly. Students can browse and purchase courses from their preferred teachers, while instructors can create and launch their own courses.
 
 - **Admin email**: admin@ee.com
 - **Password**: 123456
