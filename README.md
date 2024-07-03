@@ -52,3 +52,5 @@ EduElevate is a platform that connects students with instructors directly. Stude
 - Navigate to your desired location
 - Clone the repository: git clone <URL>
 - Install the npm packages: npm install
+
+### Server side repo code is [here](https://github.com/mohsinahmedarfat/EduElevate-server-side).
